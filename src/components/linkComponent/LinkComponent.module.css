@@ -1,0 +1,23 @@
+.listItem {
+    display: inline-block;
+    background-color: rgb(27, 57, 123);
+    height: auto;
+    margin-right: 2%;
+    cursor: pointer;
+    padding-right: 3%;
+    padding-left: 3%;
+    padding-top: 0.5%;
+    padding-bottom: 0.5%;
+    margin: 0.1%;
+    vertical-align: top;
+    border-radius: 10px;
+}
+.listItem:hover{
+    background: rgb(105, 148, 244)
+}
+.header-link {
+    font-size: 22px;
+    letter-spacing: 3px;
+    color: white;
+    text-decoration: none;
+}
