@@ -4,9 +4,9 @@ import './index.css';
 import App from './App';
 
 import { BrowserRouter } from 'react-router-dom';
-import Header from './components/Navigation/Navbar'
+import Header from './components/header/Header'
 import Footer from './components/footer/Footer'
-import Navigation from './components/Navigation'
+import Navigation from './Navigation'
 
 ReactDOM.render(
   <React.StrictMode>
