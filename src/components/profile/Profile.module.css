@@ -1,0 +1,23 @@
+.form {
+    padding: 4rem;
+    background: rgb(141, 122, 122);
+} 
+.itemsContainer{
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    max-width: 1120px;
+    width: 90%;
+    margin: 0 auto;
+}
+.itemsWrapper{
+    position: relative;
+    margin: 50px 0 45px;
+}
+.items{
+    display: inline-flex;
+    margin-bottom: 24px;
+}
+.h1{
+    padding: 40px 0px 0px 0px;
+}
