@@ -1,8 +1,8 @@
 import {useContext} from 'react';
 
-import styles from './Navbar.module.css'
-import LinkComponent from '../link/LinkComponent'
-import getNavigation from '../../utils/navigation'
+import styles from './Header.module.css'
+import LinkComponent from '../linkComponent/LinkComponent'
+import getNavigation from '../../utils/navLinks'
 import UserContext from '../../Context'
 
 const Header = () => {

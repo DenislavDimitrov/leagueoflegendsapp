@@ -1,6 +1,6 @@
 import styles from './Store.module.css'
 import Items from './Items'
-import picture from '../../public/img-9.jpg'
+
 
 const Store = () => {
     //fetch
@@ -15,36 +15,13 @@ const Store = () => {
                 <div className={styles.itemsWrapper}>
                     <ul className={styles.items}>
                     <Items
-                    src={picture}
+                   
                     text = 'Check this out'
                     label = 'Mage'
                     path='/details'
                     />
                     </ul>
-                    <ul className={styles.items}>
-                    <Items
-                    src={picture}
-                    text = 'Seller: Someone Price: 20'
-                    label = 'Mage'
-                    path='/details'
-                    />
-                    </ul>
-                    <ul className={styles.items}>
-                    <Items
-                    src={picture}
-                    text = 'Check this out'
-                    label = 'Mage'
-                    path='/details'
-                    />
-                    </ul>
-                    <ul className={styles.items}>
-                    <Items
-                    src={picture}
-                    text = 'Check this out'
-                    label = 'Mage'
-                    path='/details'
-                    />
-                    </ul>
+             
                     
                 </div>
             </div>

@@ -1,5 +1,5 @@
 import styles from './About.module.css'
-import { Link } from 'react-router-dom'
+
 import picture from '../../public/denislav.jpg'
 
 const About = () => {
@@ -17,7 +17,6 @@ const About = () => {
                             <p className={styles.title}>Future Junior Web Developer</p>
                             <p>I am currently in JS Web, working with React.</p>
                             <p>ddimitrov92@abv.bg</p>
-                            <Link to="/contact"><button className={styles.button}>Contact</button></Link>
                         </div>
                     </div>
                 </div>

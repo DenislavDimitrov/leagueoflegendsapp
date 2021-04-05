@@ -1,4 +1,4 @@
-import styles from './HeroSection.module.css'
+import styles from './Home.module.css'
 import backgroundVideo from "../../public/video.mp4"
 
 function Home(){

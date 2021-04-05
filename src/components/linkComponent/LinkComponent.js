@@ -1,4 +1,4 @@
-import styles from "./Link.module.css"
+import styles from "./LinkComponent.module.css"
 import {Link} from 'react-router-dom'
 
 const LinkComponent = ({ title, href }) => {
