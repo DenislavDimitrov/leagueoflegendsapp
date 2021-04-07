@@ -7,7 +7,10 @@ module.exports = {
    
     models.User
       .find({_id})
-      .populate('champions')
+      .populate({
+        path: 'champions',
+        options: {sort: {level: -1}}
+      })
       .then((result) => res.send(result[0].champions))
       .catch(next);
   },
@@ -24,9 +27,8 @@ module.exports = {
   post: (req, res, next) => {
     const { name, type } = req.body;
     let imageUrl = '';
-    const level = 0;
+    const level = 1;
     const gold = 0;
-    console.log(type);
     const { _id } = req.user;
     if (type === 'Tank'){
       imageUrl = 'https://res.cloudinary.com/dc6ctj58m/image/upload/v1616925724/Garen_zu0kfh.jpg'

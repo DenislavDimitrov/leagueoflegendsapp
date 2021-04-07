@@ -36,13 +36,11 @@ const Profile = () => {
         })
     }
       
-    //filter
-    //search
+   
     return (
         <div className={styles.form}>
             <h1 className={styles.h1}>Hello, Summoner </h1> 
-            {/* to add Summoner name */}
-            {/* to add ternary if no champs */}
+           
             {/* add logout button */}
             <p className={styles.h1}>Here is your collection of champions. </p>
             <p className={styles.h1}>You can choose which one you want to play with and either fight or forge new items. </p>
