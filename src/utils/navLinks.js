@@ -26,6 +26,10 @@ const getNavigation = (user) => {
     ]
     const guestLinks = [
         {
+            title: "Home",
+            link: "/home"
+        },
+        {
             title: "Register",
             link: "/register"
         },
@@ -36,10 +40,6 @@ const getNavigation = (user) => {
         {
             title: "About",
             link: "/about"
-        },
-        {
-            title: "Contact",
-            link: "/contact"
         },
     ]
     

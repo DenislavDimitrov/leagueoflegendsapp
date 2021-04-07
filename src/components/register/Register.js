@@ -14,7 +14,7 @@ const handleSubmit = async (e) => {
     e.preventDefault()
     register(username, password)
     .then(() => {
-        history.push('/')
+        history.push('/login')
     })
 }
     return (
@@ -26,10 +26,10 @@ const handleSubmit = async (e) => {
                     <input className={styles.input} type="text" placeholder="Enter Username" name="username" required onChange={e => setUsername(e.target.value)}/>
 
                     <label htmlFor="password"><b>Password:</b></label>
-                    <input className={styles.input} type="text" placeholder="Enter password" name="password" required onChange={e => setPassword(e.target.value)} />
+                    <input className={styles.input} type="password" placeholder="Enter password" name="password" required onChange={e => setPassword(e.target.value)} />
 
                     <label htmlFor="rePassword"><b>Re-Password:</b></label>
-                    <input className={styles.input} type="text" placeholder="Repeat password" name="rePassword" required />
+                    <input className={styles.input} type="password" placeholder="Repeat password" name="rePassword" required />
 
                     <button className={styles.button} type="submit">Register</button>
                     <Link className={styles.link} to="/login">You already have an account? Login here.</Link>

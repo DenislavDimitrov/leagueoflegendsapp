@@ -4,8 +4,6 @@ import { useParams } from 'react-router-dom';
 import styles from './Profile.module.css'
 import Champions from './Champions'
 
-
-
 const Profile = () => {
     const [champions, setChampions] = useState([])
     const params = useParams();
@@ -14,7 +12,7 @@ const Profile = () => {
         const id = params.userid;
         const promise = await fetch(`http://localhost:3003/api/champions?id=${id}`);
         const response = await promise.json();
-      
+        console.log(response);
         setChampions(response)
     }, [params.userid])
     
@@ -44,7 +42,11 @@ const Profile = () => {
         <div className={styles.form}>
             <h1 className={styles.h1}>Hello, Summoner </h1> 
             {/* to add Summoner name */}
-            <p className={styles.h1}>Choose your champion. </p>
+            {/* to add ternary if no champs */}
+            {/* add logout button */}
+            <p className={styles.h1}>Here is your collection of champions. </p>
+            <p className={styles.h1}>You can choose which one you want to play with and either fight or forge new items. </p>
+
 
             <div className={styles.itemsContainer}>
                 <div className={styles.itemsWrapper}>

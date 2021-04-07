@@ -16,7 +16,7 @@ const register = async (username, password) => {
  
  
     } catch (e) {
-      //todo something
+      console.log(e);
     }
      
      
