@@ -73,6 +73,7 @@ const Champion = () => {
     const forge = async (e) => {
         if (secondsForge === 'Done') {
             e.preventDefault()
+            
             const id = params.championid;
             await fetch('http://localhost:3003/api/items', {
                 method: 'POST',
@@ -86,7 +87,9 @@ const Champion = () => {
             });
             setSecondsForge('Forge')
         } else if (secondsForge === 'Forge') {
-            setSecondsForge(10)
+            if (champion.gold >=50){
+                setSecondsForge(10)
+            }
         }
 
     }

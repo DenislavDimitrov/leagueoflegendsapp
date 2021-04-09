@@ -4,7 +4,6 @@ module.exports = {
   
   post: (req, res, next) => {
     const _id = req.body.id;
-   
     let imageUrl = '';
     let type = Math.floor(Math.random()*10)
     let itemName = '';
@@ -36,7 +35,7 @@ module.exports = {
     models.Item.create({ itemName, type, power, price, imageUrl, author: _id })
       .then((createdItem) => {
         return Promise.all([
-          models.Champion.updateOne({ _id }, { $push: { items: createdItem } }),
+          models.Champion.updateOne({ _id }, { $push: { items: createdItem}, $inc: { gold: -50 }}),
           models.Item.findOne({ _id: createdItem._id })
         ]);
       })
