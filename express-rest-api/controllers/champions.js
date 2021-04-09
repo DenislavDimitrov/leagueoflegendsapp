@@ -16,13 +16,25 @@ module.exports = {
   },
 
   getAll: (req, res, next) => {
-    models.Champion
-    .find()
-    .sort({level: -1})
-    .limit(10)
-    .populate('author')
-    .then((champions) => res.send(champions))
-    .catch(next)
+    let category = req.query.category;
+   
+    if (category !== ""){
+      models.Champion
+      .find({type: category})
+      .sort({level: -1})
+      .limit(10)
+      .populate('author')
+      .then((champions) => res.send(champions))
+      .catch(next)
+    } else {
+      models.Champion
+      .find({})
+      .sort({level: -1})
+      .limit(10)
+      .populate('author')
+      .then((champions) => res.send(champions))
+      .catch(next)
+    }
   },
 
   getOne: (req, res, next) => {

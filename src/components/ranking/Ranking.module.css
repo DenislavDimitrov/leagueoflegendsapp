@@ -52,3 +52,6 @@
 .btnDiv{
     text-align: center;
 }
+.btn:hover {
+    background-color: red;
+}
