@@ -35,7 +35,7 @@ module.exports = {
     models.Item.create({ itemName, type, power, price, imageUrl, author: _id })
       .then((createdItem) => {
         return Promise.all([
-          models.Champion.updateOne({ _id }, { $push: { items: createdItem}, $inc: { gold: -50 }}),
+          models.Champion.updateOne({ _id }, { $push: { items: createdItem}, $inc: { gold: -100 }}),
           models.Item.findOne({ _id: createdItem._id })
         ]);
       })
@@ -46,9 +46,10 @@ module.exports = {
   },
 
   delete: (req, res, next) => {
-    const id = req.params.id;
-    models.Champion.deleteOne({ _id: id })
-      .then((removedChampion) => res.send(removedChampion))
-      .catch(next)
+    const {itemId, championId, gold} = req.body;
+    
+    models.Item.deleteOne({ _id: itemId })
+    .then(() => models.Champion.updateOne({_id: championId}, {$inc: { gold: +gold }}))
+    .catch(next)
   }
 };

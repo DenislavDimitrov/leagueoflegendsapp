@@ -8,12 +8,11 @@ import styles from './ChampionDetails.module.css'
 const Champion = () => {
     const [champion, setChampion] = useState({})
     const [items, setItems] = useState([])
-
+    
     const [secondsFight, setSecondsFight] = useState('Fight')
     const [secondsForge, setSecondsForge] = useState('Forge')
 
     const params = useParams();
-
 
     const getChampion = useCallback(async () => {
         const id = params.championid;
@@ -37,15 +36,18 @@ const Champion = () => {
             setTimeout(() => setSecondsForge(secondsForge - 1), 1000)
         } else if (secondsForge === 0) {
             setSecondsForge("Done")
-        }
+        }  
+        
     }, [getChampion, secondsFight, setSecondsForge, secondsForge]);
 
-    const fight = async () => {
+    const fight = async (e) => {
+        e.preventDefault()
+
         if (secondsFight === 'Collect') {
 
             let power = 1;
             champion.items.forEach(element => {
-              
+
                 if (element.type === champion.type) {
                     power += element.power
                 }
@@ -71,9 +73,10 @@ const Champion = () => {
     } //to services
 
     const forge = async (e) => {
+        e.preventDefault()
+
         if (secondsForge === 'Done') {
-            e.preventDefault()
-            
+
             const id = params.championid;
             await fetch('http://localhost:3003/api/items', {
                 method: 'POST',
@@ -87,16 +90,33 @@ const Champion = () => {
             });
             setSecondsForge('Forge')
         } else if (secondsForge === 'Forge') {
-            if (champion.gold >=50){
+            if (champion.gold >= 100) {
                 setSecondsForge(10)
             }
         }
 
     }
+    const sell = async(e) => {
+        e.preventDefault()
+        const championId = params.championid;
+        const itemId = e.target.id;
+        const gold = items.find(x => x._id === itemId)
+        
+        await fetch(`http://localhost:3003/api/items/${itemId}`, {
+            method: 'DELETE',
+            body: JSON.stringify(
+                { itemId, championId, gold: gold.price}
+            ),
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': getCookie('x-auth-token')
+            }
+        })     
+    }
 
     const renderItems = () => {
         return items.map(item => {
-           
+
             return (
                 <li key={item._id} className={styles.cardsItem}>
                     <div className={styles.itemLink}>
@@ -107,15 +127,7 @@ const Champion = () => {
                             <h5 className={styles.itemText}>Item: {item.itemName}</h5>
                             <h5 className={styles.itemText}>Power: {item.power}</h5>
                             <h5 className={styles.itemText}>Price: {item.price}</h5>
-                            {/* 
-                        <button onClick={fight}
-                            className={styles.button}>
-                            {secondsFight}
-                        </button>
-                        <button onClick={forge}
-                            className={styles.buttonForge}>
-                            {secondsForge}
-                        </button> */}
+                            <button id={item._id} className={styles.button} onClick={sell}>Sell for {item.price}</button>
                         </div>
                     </div>
                 </li>
@@ -149,8 +161,8 @@ const Champion = () => {
                     </div>
                 </div>
             </li>
-            <div > 
-            {renderItems()}
+            <div >
+                {renderItems()}
             </div >
         </div>
     )

@@ -40,7 +40,7 @@ const Profile = () => {
 
     return (
         <div className={styles.form}>
-            <h1 className={styles.h1}>Hello, {user.username} </h1>
+            <h1 className={styles.h1}>Hello, {user.username}! </h1>
             <p className={styles.h1}>Here is your collection of champions. </p>
             <p className={styles.h1}>You can choose which one you want to play with and either fight or forge new items. </p>
             <div className={styles.itemsContainer}>

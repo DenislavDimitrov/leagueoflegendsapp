@@ -5,6 +5,8 @@
     flex-direction: column;
     margin-top: 1px;
     display: flex;
+    padding: 100px 0px 100px 0px;
+
 } 
 .cardsItem{
     display: inline-block;
