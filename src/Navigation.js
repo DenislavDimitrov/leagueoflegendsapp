@@ -1,4 +1,5 @@
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route, useHistory } from 'react-router-dom'
+import {useContext} from 'react'
 import About from './components/about/About'
 import Contact from './components/contact/Contact'
 import Home from './components/home/Home'
@@ -8,8 +9,11 @@ import Ranking from './components/ranking/Ranking'
 import Create from './components/create/Create'
 import Profile from './components/profile/Profile'
 import ChampionDetails from './components/champions/ChampionDetails'
+import UserContext from './Context'
 
 const Navigation = () => {
+    const context = useContext(UserContext)
+    const history = useHistory()
     return (
             <Switch>
                 <Route path="/" exact component={Home} />
@@ -20,6 +24,10 @@ const Navigation = () => {
                 <Route path="/contact" component={Contact} />
                 <Route path="/ranking" component={Ranking} />
                 <Route path="/create" component={Create} />
+                <Route path="/logout" render = {() => {
+                    context.logOut()
+                    history.push('/')
+                }} />
                 <Route path="/profile/:userid" component={Profile} />
                 <Route path="/details/:championid" component={ChampionDetails} />
 

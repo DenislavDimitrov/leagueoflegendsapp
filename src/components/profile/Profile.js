@@ -1,11 +1,14 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 
 import styles from './Profile.module.css'
 import Champions from './Champions'
+import UserContext from '..//../Context'
 
 const Profile = () => {
     const [champions, setChampions] = useState([])
+    const {user} = useContext(UserContext)
+   
     const params = useParams();
 
     const getChampions = useCallback(async () => {
@@ -39,7 +42,7 @@ const Profile = () => {
    
     return (
         <div className={styles.form}>
-            <h1 className={styles.h1}>Hello, Summoner </h1> 
+            <h1 className={styles.h1}>Hello, {user.username} </h1> 
            
             {/* add logout button */}
             <p className={styles.h1}>Here is your collection of champions. </p>

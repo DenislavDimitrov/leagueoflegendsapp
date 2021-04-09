@@ -13,16 +13,15 @@ const getNavigation = (user) => {
             title: "Ranking",
                 link: "/ranking"
         },
-    
-        {
-            title: "Forge",
-                link: "/forge"
-        },
         {
             title: "Create",
                 link: "/create"
-        }
-        
+        },
+    
+        {
+            title: "Logout",
+                link: "/logout"
+        },
     ]
     const guestLinks = [
         {
