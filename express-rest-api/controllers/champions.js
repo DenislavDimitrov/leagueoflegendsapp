@@ -15,6 +15,16 @@ module.exports = {
       .catch(next);
   },
 
+  getAll: (req, res, next) => {
+    models.Champion
+    .find()
+    .sort({level: -1})
+    .limit(10)
+    .populate('author')
+    .then((champions) => res.send(champions))
+    .catch(next)
+  },
+
   getOne: (req, res, next) => {
     const _id = req.query.id;
         models.Champion

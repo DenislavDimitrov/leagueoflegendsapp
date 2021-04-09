@@ -10,8 +10,8 @@ const getNavigation = (user) => {
         },
     
         {
-            title: "Store",
-                link: "/store"
+            title: "Ranking",
+                link: "/ranking"
         },
     
         {

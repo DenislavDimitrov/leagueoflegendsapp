@@ -4,8 +4,7 @@ import Contact from './components/contact/Contact'
 import Home from './components/home/Home'
 import Login from './components/login/Login'
 import Register from './components/register/Register'
-import Store from './components/store/Store'
-
+import Ranking from './components/ranking/Ranking'
 import Create from './components/create/Create'
 import Profile from './components/profile/Profile'
 import ChampionDetails from './components/champions/ChampionDetails'
@@ -19,7 +18,7 @@ const Navigation = () => {
                 <Route path="/register" component={Register} />
                 <Route path="/about" component={About} />
                 <Route path="/contact" component={Contact} />
-                <Route path="/store" component={Store} />
+                <Route path="/ranking" component={Ranking} />
                 <Route path="/create" component={Create} />
                 <Route path="/profile/:userid" component={Profile} />
                 <Route path="/details/:championid" component={ChampionDetails} />

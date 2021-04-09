@@ -4,6 +4,9 @@ const { auth } = require('../utils');
 
 router.get('/', controllers.champions.get);
 
+router.get('/getAll', controllers.champions.getAll);
+
+
 router.get('/details', controllers.champions.getOne);
 
 

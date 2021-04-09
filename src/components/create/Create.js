@@ -35,10 +35,9 @@ const Create = ({
   }
 
   return (
-    <div >
-      <form className={styles.form} onSubmit={handleSubmit}>
-      {err ? <span className={styles.errSpan}>{err}</span> : null}
-
+    <div className={styles.form}>
+      <form onSubmit={handleSubmit}>
+        {err ? <span className={styles.errSpan}>{err}</span> : null}
         <div className={styles.container}>
           <h2 className={styles.input}>Create your Champion</h2>
           <label htmlFor="name"><b>Name:</b></label>
@@ -58,6 +57,69 @@ const Create = ({
 
         </div>
       </form>
+
+
+      
+      <div className={styles.ul}>
+
+
+        <ul >
+
+          <li className={styles.li}>
+            <div className={styles.img}>
+            <img className={styles.pic} src="https://res.cloudinary.com/dc6ctj58m/image/upload/v1616925724/Garen_zu0kfh.jpg" alt='Item'/>
+
+              <h1>
+            Jinx
+              </h1>
+              dadada
+          </div>
+          </li>
+
+          <li className={styles.li}>
+            <div className={styles.img}>
+            <img className={styles.pic} src="https://res.cloudinary.com/dc6ctj58m/image/upload/v1617439002/j4_vysybm.jpg" alt='Item'/>
+
+            <h1>
+            Garen
+              </h1>
+             <p>dadada</p>
+          </div>
+          </li>
+         
+          <li className={styles.li}>
+            <div className={styles.img}>
+            <img  className={styles.pic} src="https://res.cloudinary.com/dc6ctj58m/image/upload/v1617434165/Zed_fcjwgi.jpg" alt='Item'/>
+
+            <h1>
+            Jarvan
+              </h1>
+             <p>dadada</p>
+          </div>
+          </li>
+          <li className={styles.li}>
+            <div className={styles.img}>
+            <img  className={styles.pic} src="https://res.cloudinary.com/dc6ctj58m/image/upload/v1617434149/Jinx_vfekv8.jpg" alt='Item'/>
+            <h1>
+            Jinx
+              </h1>
+             <p>dadada</p>
+          </div>
+          </li>
+          <li className={styles.li}>
+            <div className={styles.img}>
+            <img className={styles.pic} src="https://res.cloudinary.com/dc6ctj58m/image/upload/v1617434165/Lux_uxbarh.jpg" alt='Item'/>
+              
+            <h1>
+            Zed
+              </h1>
+             <p>dadada</p>
+          </div>
+          </li>
+         
+
+        </ul>
+      </div>
     </div>
   )
 }

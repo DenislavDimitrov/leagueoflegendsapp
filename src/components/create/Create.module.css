@@ -39,3 +39,20 @@
     background-color: red;
     position: fixed;
 }
+.ul{
+    background-color:black;
+    display:inline;
+    margin: 10px;
+    padding: 10px;
+} 
+.li{
+    float: right;
+    display: inline;
+    margin: 10px;
+    padding: 10px;
+} 
+.pic{
+    width: 300px;
+    height: 300px;
+}
+
