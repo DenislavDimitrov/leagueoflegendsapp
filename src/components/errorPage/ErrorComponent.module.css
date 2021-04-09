@@ -1,0 +1,18 @@
+.background{
+    background: url('https://res.cloudinary.com/dc6ctj58m/image/upload/v1617985945/amumu_wtzoqm.jpg') center center/cover no-repeat;
+    height: 100vh;
+    margin-top: 3%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    padding: 100px 0px 100px 0px;
+}
+.strong{
+    font-size: 90px;
+    position: relative;
+    padding: 500px 0px 100px 0px;
+    color: red;
+
+}

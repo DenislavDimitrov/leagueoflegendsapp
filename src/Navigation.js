@@ -1,7 +1,6 @@
 import { Switch, Route, useHistory } from 'react-router-dom'
 import {useContext} from 'react'
 import About from './components/about/About'
-import Contact from './components/contact/Contact'
 import Home from './components/home/Home'
 import Login from './components/login/Login'
 import Register from './components/register/Register'
@@ -11,6 +10,7 @@ import Profile from './components/profile/Profile'
 import ChampionDetails from './components/champions/ChampionDetails'
 import UserContext from './Context'
 import isAuth from './hoc/authentication'
+import ErrorComponent from './components/errorPage/ErrorComponent'
 
 const Navigation = () => {
     const context = useContext(UserContext)
@@ -22,7 +22,6 @@ const Navigation = () => {
                 <Route path="/login" component={Login} />
                 <Route path="/register" component={Register} />
                 <Route path="/about" component={About} />
-                <Route path="/contact" component={Contact} />
                 <Route path="/ranking" component={isAuth(Ranking)} />
                 <Route path="/create" component={isAuth(Create)} />
                 <Route path="/logout" render = {() => {
@@ -31,6 +30,8 @@ const Navigation = () => {
                 }} />
                 <Route path="/profile/:userid" component={isAuth(Profile)} />
                 <Route path="/details/:championid" component={isAuth(ChampionDetails)} />
+                <Route path="*" component={ErrorComponent} />
+
 
             </Switch>
     )
