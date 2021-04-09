@@ -10,6 +10,7 @@ import Create from './components/create/Create'
 import Profile from './components/profile/Profile'
 import ChampionDetails from './components/champions/ChampionDetails'
 import UserContext from './Context'
+import isAuth from './hoc/authentication'
 
 const Navigation = () => {
     const context = useContext(UserContext)
@@ -22,14 +23,14 @@ const Navigation = () => {
                 <Route path="/register" component={Register} />
                 <Route path="/about" component={About} />
                 <Route path="/contact" component={Contact} />
-                <Route path="/ranking" component={Ranking} />
-                <Route path="/create" component={Create} />
+                <Route path="/ranking" component={isAuth(Ranking)} />
+                <Route path="/create" component={isAuth(Create)} />
                 <Route path="/logout" render = {() => {
                     context.logOut()
                     history.push('/')
                 }} />
-                <Route path="/profile/:userid" component={Profile} />
-                <Route path="/details/:championid" component={ChampionDetails} />
+                <Route path="/profile/:userid" component={isAuth(Profile)} />
+                <Route path="/details/:championid" component={isAuth(ChampionDetails)} />
 
             </Switch>
     )
