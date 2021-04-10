@@ -1,5 +1,4 @@
-League of legends Application
-An application used to develop your own League of legends champion - Marksman, Tank, Fighter, Assassin or Mage, built with React, JavaScript and CSS. For server I have used Express and for database - MongoDB.
+League of legends Application is an application used to develop your own League of legends champion - Marksman, Tank, Fighter, Assassin or Mage, built with React, JavaScript and CSS. For server I have used Express and for database - MongoDB.
 
 Currently the project is finished as for the Project defense, but will be developed further ahead, so it can show the best of me for my job applications.
 
