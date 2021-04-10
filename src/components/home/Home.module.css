@@ -38,6 +38,8 @@
     vertical-align: top;
     border-radius: 10px;
     font-size:200%;
+    text-decoration: none;
+
 }
 .btn:hover{
     background: rgb(105, 148, 244)
