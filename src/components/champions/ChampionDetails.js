@@ -10,6 +10,7 @@ const Champion = () => {
     const [champion, setChampion] = useState({})
     const [items, setItems] = useState([])
     const [err, setErr] = useState(false)
+    const [state, setState] = useState(0);
   
     const [secondsFight, setSecondsFight] = useState('Fight')
     const [secondsForge, setSecondsForge] = useState('Forge')
@@ -33,13 +34,12 @@ const Champion = () => {
         } else if (secondsFight === 0) {
             setSecondsFight("Collect")
         }
-
         if (secondsForge > 0) {
             setTimeout(() => setSecondsForge(secondsForge - 1), 1000)
         } else if (secondsForge === 0) {
             setSecondsForge("Done")
         }
-    }, [getChampion, secondsFight, setSecondsForge, secondsForge]);
+    }, [getChampion, secondsFight, setSecondsForge, secondsForge, state]);
 
     const fight = async (e) => {
         e.preventDefault()
@@ -99,12 +99,17 @@ const Champion = () => {
         }
 
     }
+    const forceUpdate = () => {
+        setTimeout( function () {
+            setState(state + 1)
+        },500)
+    }
     const sell = async (e) => {
         e.preventDefault()
         const championId = params.championid;
         const itemId = e.target.id;
         const gold = items.find(x => x._id === itemId)
-
+        forceUpdate()
         await fetch(`http://localhost:3003/api/items/${itemId}`, {
             method: 'DELETE',
             body: JSON.stringify(
@@ -114,8 +119,7 @@ const Champion = () => {
                 'Content-Type': 'application/json',
                 'Authorization': getCookie('x-auth-token')
             }
-        })
-        
+        })  
     }
 
     const renderItems = () => {

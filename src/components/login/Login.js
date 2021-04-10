@@ -29,7 +29,7 @@ const LoginComponent = () => {
         history.push(`/profile/${user.id}`);
       },
       (e) => {
-        console.log(e);
+        
         setErr('Something went wrong. Username or Password incorrect.')
         setTimeout(function () {
           setErr(false)
