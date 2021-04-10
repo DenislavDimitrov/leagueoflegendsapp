@@ -1,8 +1,9 @@
 import styles from './Create.module.css'
 
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import getCookie from '../../utils/cookie'
 import getChamps from '../../utils/champs'
+import UserContext from '..//../Context'
 
 const Create = ({
   history
@@ -12,6 +13,8 @@ const Create = ({
   const [err, setErr] = useState(false);
 
   const champs = getChamps()
+  const { user } = useContext(UserContext)
+
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -27,7 +30,7 @@ const Create = ({
           'Authorization': getCookie('x-auth-token')
         }
       });
-      history.push('/')
+      history.push(`/profile/${user.id}`)
     } else {
       setErr('Please, select type!')
       setTimeout(function () {
