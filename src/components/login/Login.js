@@ -1,6 +1,6 @@
 import { useHistory } from 'react-router-dom';
 import { useContext, useState } from 'react';
-import authenticate from '../../utils/authenticate';
+import login from '../../utils/login';
 import UserContext from '../../Context';
 
 import styles from './Login.module.css'
@@ -18,7 +18,7 @@ const LoginComponent = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    await authenticate(
+    await login(
       'http://localhost:3003/api/user/login',
       {
         username,

@@ -35,3 +35,7 @@
 .link {
     color: black
 }
+.errSpan{
+    background-color: red;
+    position: fixed;
+}

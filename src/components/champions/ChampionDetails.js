@@ -6,9 +6,11 @@ import getCookie from '../../utils/cookie'
 import styles from './ChampionDetails.module.css'
 
 const Champion = () => {
+    
     const [champion, setChampion] = useState({})
     const [items, setItems] = useState([])
-    
+    const [err, setErr] = useState(false)
+  
     const [secondsFight, setSecondsFight] = useState('Fight')
     const [secondsForge, setSecondsForge] = useState('Forge')
 
@@ -20,12 +22,12 @@ const Champion = () => {
         const response = await promise.json();
         setItems(response.items);
         setChampion(response)
-
+        
     }, [params.championid])
 
     useEffect(() => {
         getChampion();
-
+        
         if (secondsFight > 0) {
             setTimeout(() => setSecondsFight(secondsFight - 1), 1000)
         } else if (secondsFight === 0) {
@@ -36,15 +38,13 @@ const Champion = () => {
             setTimeout(() => setSecondsForge(secondsForge - 1), 1000)
         } else if (secondsForge === 0) {
             setSecondsForge("Done")
-        }  
-        
+        }
     }, [getChampion, secondsFight, setSecondsForge, secondsForge]);
 
     const fight = async (e) => {
         e.preventDefault()
 
         if (secondsFight === 'Collect') {
-
             let power = 1;
             champion.items.forEach(element => {
 
@@ -70,13 +70,11 @@ const Champion = () => {
         } else if (secondsFight === 'Fight') {
             setSecondsFight(10)
         }
-    } //to services
+    } 
 
     const forge = async (e) => {
         e.preventDefault()
-
         if (secondsForge === 'Done') {
-
             const id = params.championid;
             await fetch('http://localhost:3003/api/items', {
                 method: 'POST',
@@ -92,26 +90,32 @@ const Champion = () => {
         } else if (secondsForge === 'Forge') {
             if (champion.gold >= 100) {
                 setSecondsForge(10)
+            } else {
+                setErr('Not enough gold.')
+                setTimeout(function () {
+                    setErr(false)
+                  }, 2000)
             }
         }
 
     }
-    const sell = async(e) => {
+    const sell = async (e) => {
         e.preventDefault()
         const championId = params.championid;
         const itemId = e.target.id;
         const gold = items.find(x => x._id === itemId)
-        
+
         await fetch(`http://localhost:3003/api/items/${itemId}`, {
             method: 'DELETE',
             body: JSON.stringify(
-                { itemId, championId, gold: gold.price}
+                { itemId, championId, gold: gold.price }
             ),
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': getCookie('x-auth-token')
             }
-        })     
+        })
+        
     }
 
     const renderItems = () => {
@@ -154,11 +158,13 @@ const Champion = () => {
                             className={styles.button}>
                             {secondsFight}
                         </button>
+
                         <button onClick={forge}
                             className={styles.buttonForge}>
                             {secondsForge}
                         </button>
                     </div>
+                     {err ? <span className={styles.errSpan}>{err}</span> : null}
                 </div>
             </li>
             <div >

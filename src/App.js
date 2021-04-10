@@ -38,11 +38,10 @@ const App = (props) => {
       }
     })
       .then(promise => {
-       
         return promise.json();
       })
       .then(response => {
-      
+
         if (response.status) {
           logIn({
             username: response.user.username,
@@ -51,9 +50,9 @@ const App = (props) => {
         } else {
           logOut();
         }
-        setLoading(false); 
+        setLoading(false);
       });
-  }, []); 
+  }, []);
 
   if (loading) {
     return (

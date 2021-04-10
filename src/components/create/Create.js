@@ -2,6 +2,7 @@ import styles from './Create.module.css'
 
 import { useState } from 'react'
 import getCookie from '../../utils/cookie'
+import getChamps from '../../utils/champs'
 
 const Create = ({
   history
@@ -10,6 +11,7 @@ const Create = ({
   const [type, setType] = useState(null);
   const [err, setErr] = useState(false);
 
+  const champs = getChamps()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -52,72 +54,29 @@ const Create = ({
             <option value="Assassin">Assassin</option>
             <option value="Fighter">Fighter</option>
           </select>
-
           <button className={styles.button} type="submit">Create</button>
-
         </div>
       </form>
 
-
-      
       <div className={styles.ul}>
-
-
         <ul >
-
-          <li className={styles.li}>
-            <div className={styles.img}>
-            <img className={styles.pic} src="https://res.cloudinary.com/dc6ctj58m/image/upload/v1616925724/Garen_zu0kfh.jpg" alt='Item'/>
-
-              <h1>
-            Jinx
-              </h1>
-              dadada
-          </div>
-          </li>
-
-          <li className={styles.li}>
-            <div className={styles.img}>
-            <img className={styles.pic} src="https://res.cloudinary.com/dc6ctj58m/image/upload/v1617439002/j4_vysybm.jpg" alt='Item'/>
-
-            <h1>
-            Garen
-              </h1>
-             <p>dadada</p>
-          </div>
-          </li>
-         
-          <li className={styles.li}>
-            <div className={styles.img}>
-            <img  className={styles.pic} src="https://res.cloudinary.com/dc6ctj58m/image/upload/v1617434165/Zed_fcjwgi.jpg" alt='Item'/>
-
-            <h1>
-            Jarvan
-              </h1>
-             <p>dadada</p>
-          </div>
-          </li>
-          <li className={styles.li}>
-            <div className={styles.img}>
-            <img  className={styles.pic} src="https://res.cloudinary.com/dc6ctj58m/image/upload/v1617434149/Jinx_vfekv8.jpg" alt='Item'/>
-            <h1>
-            Jinx
-              </h1>
-             <p>dadada</p>
-          </div>
-          </li>
-          <li className={styles.li}>
-            <div className={styles.img}>
-            <img className={styles.pic} src="https://res.cloudinary.com/dc6ctj58m/image/upload/v1617434165/Lux_uxbarh.jpg" alt='Item'/>
-              
-            <h1>
-            Zed
-              </h1>
-             <p>dadada</p>
-          </div>
-          </li>
-         
-
+          {
+            champs.map(champ => {
+              return (
+                <li className={styles.li}>
+                  <div className={styles.img}>
+                    <img className={styles.pic} src={champ.src} alt='Item' />
+                    <h1 className={styles.text}>
+                      {champ.type}
+              </h1 >
+                    <p className={styles.text}>
+                      {champ.text}
+              </p>
+                  </div>
+                </li>
+              )
+            })
+          }
         </ul>
       </div>
     </div>

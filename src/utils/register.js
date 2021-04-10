@@ -13,10 +13,9 @@ const register = async (username, password) => {
      })
      const authToken = promise.headers.get('Authorization')
      document.cookie = `x-auth-token=${authToken}`
- 
- 
+     
     } catch (e) {
-      console.log(e);
+      
     }
      
      
